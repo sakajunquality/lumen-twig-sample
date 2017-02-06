@@ -11,6 +11,14 @@
 |
 */
 
-$app->get('/', function () use ($app) {
+$app->get('/version', function () use ($app) {
     return $app->version();
+});
+
+# コントローラに処理させるパターン
+$app->get('/', 'TopPageController@index');
+
+# そのままviewを表示させるパターン
+$app->get('/no-controller', function () use ($app) {
+    return view('top_page', ['h1' => 'lumen + twig']);
 });
